@@ -162,3 +162,7 @@ cython_debug/
 #.idea/
 
 db.sqlite3
+node_modules
+staticfiles/static
+staticfiles/src/CACHE
+staticfiles/src/style.css

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "tailwindcss -i ./static/src/input.css -o ./static/src/style.css --watch",
+    "copy:flowbite": "copy node_modules/flowbite/dist/flowbite.min.js static/src/flowbite.min.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.7"
+  },
+  "dependencies": {
+    "flowbite": "^2.4.1"
+  }
+}

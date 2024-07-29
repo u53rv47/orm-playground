@@ -1,3 +1,4 @@
+{% load compress %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,19 +9,33 @@
             {% block title %}
             {% endblock title %}
         </title>
-        <link rel="stylesheet" href={% static "base.css" %}>
-        {% block css_files %}
-        {% endblock css_files %}
+        {% compress css %}
+            <link rel="stylesheet" href="{% static 'style.css' %}">
+        {% endcompress %}
+        <script differ src="{% static "flowbite.min.js" %}"></script>
     </head>
     <body>
         <header id="main-navigation">
-            <h3>
-                <a href="{% url "main-page" %}">ORM Playground</a>
-            </h3>
-            <p class="para">My name is vijay.</p>
+            <nav class="bg-gray-800 p-4">
+                <div class="container mx-auto flex justify-between items-center">
+                    <a href="#" class="text-white text-lg font-semibold">ORM Playground</a>
+                    <div class="space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">Home</a>
+                        <a href="#" class="text-gray-300 hover:text-white">About</a>
+                        <a href="#" class="text-gray-300 hover:text-white">Services</a>
+                        <a href="#" class="text-gray-300 hover:text-white">Contact</a>
+                    </div>
+                </div>
+            </nav>
         </header>
-        {% block content %}
-        {% endblock content %}
+        <div class="flex flex-row">
+            <div class="sm:basis-0 md:basis-1/6 md:mr-0.5 sm:border-0 md:border-3 md:border-gray md:rounded-lg"></div>
+            <div class="sm:basis-full md:basis-2/3 sm:border-0 md:border-3 md:border-gray md:rounded-lg">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            <div class="sm:basis-0 md:basis-1/6 md:ml-0.5 sm:border-0 md:border-3 md:border-gray md:rounded-lg"></div>
+        </div>
         <footer>
             Footer
         </footer>
