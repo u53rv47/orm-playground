@@ -5,7 +5,42 @@
 {% endblock title %}
 {% block css_files %}
     <link rel="stylesheet" href={% static "core/main.css" %}>
+    <script defer src="{% static "core/main.js" %}"></script>
 {% endblock css_files %}
 {% block content %}
-    <h1 class="first-h1">Welcome to ORM Playground</h1>
+    <section class="main-container">
+        <div id="question-explorer"></div>
+        <form id="main-form">
+            <div class="select-container">
+                <div id="database-container" class="form-container">
+                    <label class="form-label" for="database-select">Database:</label>
+                    <select id="database-select" class="form-select" onChange="updateDatabase()">
+                        {% for database in databases %}
+                            <option value={{ database.value }} class="form-option"> {{ database.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="schema-container" class="form-container"></div>
+                <div id="language-container" class="form-container">
+                    <label class="form-label" for="language-select">Language:</label>
+                    <select id="language-select" class="form-select" onChange="updateFramework()">
+                        {% for language in languages %}
+                            <option value={{ language.value }} class="form-option"> {{ language.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="framework-container" class="form-container"></div>
+            </div>
+            <textarea id="editor" rows="4" placeholder="Enter your code here..."></textarea>
+            <div id="button-container" class="form-container">
+                <button class="clear-button" onclick="clearInput()">Clear</button>
+                <button class="submit-button" onclick="submitForm()">Submit</button>
+            </div>
+        </form>
+        <div class="right-sidebar">Right Sidebar</div>
+    </section>
+    {{ frameworks|json_script:"frameworks-data" }}
+    <script>const questionUrl = '{% url "questions-by-db" database="placeholder" %}';</script>
 {% endblock content %}

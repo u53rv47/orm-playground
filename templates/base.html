@@ -14,13 +14,19 @@
     </head>
     <body>
         <header id="main-navigation">
-            <h3>
-                <a href="{% url "main-page" %}">ORM Playground</a>
-            </h3>
-            {% comment %} <nav>
-                <a href="{% url "read-later" %}">Stored Posts</a>
-                <a href="{% url "posts-page" %}">All Posts</a>
-            </nav> {% endcomment %}
+            <nav class="navbar">
+                <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon">
+                    <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
+                </svg>
+                <div class="nav-container">
+                    <a href="{% url "main-page" %}" class="brand">ORM Playground</a>
+                    <div class="nav-links">
+                        <a href="#">Home</a>
+                        <a href="#">Services</a>
+                        <a href="#">About</a>
+                    </div>
+                </div>
+            </nav>
         </header>
         {% block content %}
         {% endblock content %}
