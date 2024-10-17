@@ -27,7 +27,7 @@ class Order(models.Model):
     amount = models.DecimalField(max_digits=8, decimal_places=2)
     date = models.DateField()
     customer_id = models.ForeignKey(
-        Customer, on_delete=models.CASCADE, related_name="customers"
+        Customer, on_delete=models.CASCADE, related_name="o_customer"
     )
     salesman_id = models.ForeignKey(
         Salesman, on_delete=models.CASCADE, related_name="o_salesmen"
